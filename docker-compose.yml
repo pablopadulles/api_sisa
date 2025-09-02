@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  api_sisa:
+    container_name: api_sisa-v1
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - USER_NO_FHIR
+      - USER_FHIR
+      - PASS_NO_FHIR
+      - PASS_FHIR
+      - SCOPES
+      - CODE_DOMAIN
+
+  redis:
+    image: redis:7.4
+    container_name: sisa_cache
+    ports:
+      - "6379:6379"
