@@ -9,14 +9,14 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - "8000:8000"
-    environment:
-      - USER_NO_FHIR
-      - USER_FHIR
-      - PASS_NO_FHIR
-      - PASS_FHIR
-      - SCOPES
-      - CODE_DOMAIN
+      - "8001:8000"
+    # environment:
+    #   - USER_NO_FHIR
+    #   - USER_FHIR
+    #   - PASS_NO_FHIR
+    #   - PASS_FHIR
+    #   - SCOPES
+    #   - CODE_DOMAIN
 
   redis:
     image: redis:7.4
