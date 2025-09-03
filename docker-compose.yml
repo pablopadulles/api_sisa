@@ -10,13 +10,13 @@ services:
       - ./app:/app
     ports:
       - "8001:8000"
-    # environment:
-    #   - USER_NO_FHIR
+    environment:
+      - USER_NO_FHIR
     #   - USER_FHIR
-    #   - PASS_NO_FHIR
+      - PASS_NO_FHIR
     #   - PASS_FHIR
     #   - SCOPES
-    #   - CODE_DOMAIN
+      - CODE_DOMAIN
 
   redis:
     image: redis:7.4
