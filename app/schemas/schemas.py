@@ -1,34 +1,50 @@
 from pydantic import BaseModel
-from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
-class LoginForgotPasswordRequest(BaseModel):
-    samaccountname: str
-    
-class LoginRequest(BaseModel):
-    samaccountname: str
-    password: str
+class Covertura(BaseModel):
+    rnos: str
+    cobertura: str
+    servicio: str
+    fechaConsulta: Optional[str] = None
 
-class LoginResponse(BaseModel):
-    samaccountname: str
-    ou: str
-    auth_token: str
-    
-class CheckRequest(BaseModel):
-    token: str
+class Coverturas(BaseModel):
+    coverturas: List[Covertura]
 
-class CheckResponse(BaseModel):
-    valid: bool
-    samaccountname: str
+class Persona(BaseModel):
+    nroDocumento: str
+    idSexo: Optional[int] = None
 
-class ResetPasswordRequest(BaseModel):
-    token: str
-    new_password: str
-    
-class ProfileUpdate(BaseModel):
-    mail: Optional[str] = None
-    telephoneNumber: Optional[str] = None
-    cn: Optional[str] = None
+class Renaper(BaseModel):
+    idtramiteprincipal: int
+    idtramitetarjetareimpresa: int
+    ejemplar: str
+    vencimiento: str
+    emision: Optional[str]
+    apellido: str
+    nombres: str
+    fechaNacimiento: str
+    cuil: str
+    calle: str
+    numero: str
+    piso: Optional[str]
+    departamento: Optional[str]
+    cpostal: str
+    barrio: str
+    monoblock: Optional[str]
+    ciudad: str
+    municipio: str
+    provincia: str
+    pais: str
+    mensaf: str
+    origenf: str
+    fechaf: str
+    foto: Optional[str]
+    sexo: str
+    numeroDocumento: str
+    fechaConsulta: str
+    idciudadano: str
+    descripcionError: str
+    codigoError: int
 
-class AppsResponse(BaseModel):
-    apps: list
+class RenaperResponse(BaseModel):
+    renaper: Renaper

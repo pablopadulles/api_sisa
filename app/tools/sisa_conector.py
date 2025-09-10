@@ -39,9 +39,9 @@ def get_renaper(dni, sexo, token):
     res = r.json()
     return res
 
-def get_puco(dni, sexo, token):
+def get_cobertura(dni, sexo, token):
     headers.update({'token': token, 'codDominio': os.environ.get("CODE_DOMAIN", False)})
-    url = f"https://bus.msal.gob.ar/masterfile-federacion-service/api/personas/puco?nroDocumento={dni}&idSexo={sexo}"
+    url = f"https://bus.msal.gob.ar/masterfile-federacion-service/api/personas/cobertura?nroDocumento={dni}&idSexo={sexo}"
     r = requests.get(
         url,
         headers=headers,
