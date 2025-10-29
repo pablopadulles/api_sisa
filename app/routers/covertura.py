@@ -29,3 +29,5 @@ async def covertura(dni: schemas.Persona):
         return {
             "coverturas": coverturas
         }
+    else:
+        raise HTTPException(status_code=404, detail="Error al obtener las coverturas")

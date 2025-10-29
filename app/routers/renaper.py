@@ -18,3 +18,5 @@ async def renaper(persona: schemas.Persona):
         return {
             "renaper": renaper
         }
+    else:
+        raise HTTPException(status_code=404, detail="Error al obtener los datos de Renaper")
