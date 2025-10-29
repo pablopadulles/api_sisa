@@ -11,8 +11,19 @@ router = APIRouter(
 
 @router.post("/", response_model=schemas.Coverturas)
 async def covertura(dni: schemas.Persona):
-    token = get_token()
-    coverturas = get_cobertura(dni.nroDocumento, 1, token)
+    token = None 
+    coverturas = None
+
+    for _ in range(3):
+        if not token:
+            token = get_token()
+        if token:
+            coverturas = get_cobertura(dni.nroDocumento, 1, token)
+            if coverturas:
+                break
+            else:
+                token = None  # Forzar la obtención de un nuevo token en el próximo intento
+
 
     if coverturas:
         return {

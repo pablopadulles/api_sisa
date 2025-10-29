@@ -18,8 +18,8 @@ services:
     #   - SCOPES
       - CODE_DOMAIN
 
-  redis:
-    image: redis:7.4
-    container_name: sisa_cache
-    ports:
-      - "6379:6379"
+  # redis:
+  #   image: redis:7.4
+  #   container_name: sisa_cache
+  #   ports:
+  #     - "6379:6379"

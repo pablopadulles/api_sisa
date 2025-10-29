@@ -1,5 +1,6 @@
 import requests
 import os
+from fastapi import HTTPException
 
 headers = {
     "Content-Type": "application/json",
@@ -18,10 +19,9 @@ def get_token():
         "https://bus.msal.gob.ar/masterfile-federacion-service/api/usuarios/aplicacion/login",
         json=data,
         headers=headers,
-        verify=False
+        verify=False,
+        timeout=5
     )
-
-
     res = r.json()
     token = res.get('token')
     return token
@@ -33,9 +33,12 @@ def get_renaper(dni, sexo, token):
     r = requests.get(
         url,
         headers=headers,
-        verify=False
+        verify=False,
+        timeout=5
     )
-
+    if r.status_code != 200:
+        raise HTTPException(status_code=404, detail="Verificar el sexo o el DNI")
+    
     res = r.json()
     return res
 
@@ -45,7 +48,8 @@ def get_cobertura(dni, sexo, token):
     r = requests.get(
         url,
         headers=headers,
-        verify=False
+        verify=False,
+        timeout=5
     )
 
     res = r.json()
