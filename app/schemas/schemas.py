@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-class Covertura(BaseModel):
+class cobertura(BaseModel):
     rnos: str
     cobertura: str
     servicio: str
     fechaConsulta: Optional[str] = None
 
-class Coverturas(BaseModel):
-    coverturas: List[Covertura]
+class coberturas(BaseModel):
+    coberturas: List[cobertura]
 
 class Persona(BaseModel):
     nroDocumento: str

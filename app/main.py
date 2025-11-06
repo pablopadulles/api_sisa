@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import covertura, renaper
+from routers import cobertura, renaper
 from fastapi.middleware.cors import CORSMiddleware
 
 from contextlib import asynccontextmanager
@@ -30,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(covertura.router)
+app.include_router(cobertura.router)
 app.include_router(renaper.router)
 # app.include_router(check.router)
 # app.include_router(ad_attributes.router)
