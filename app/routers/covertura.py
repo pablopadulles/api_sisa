@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, Request, Response, APIRouter
 import os
+import logging
 
 from tools.sisa_conector import get_token, get_renaper, get_cobertura
 import schemas.schemas as schemas
@@ -24,10 +25,10 @@ async def covertura(dni: schemas.Persona):
             else:
                 token = None  # Forzar la obtención de un nuevo token en el próximo intento
 
-
     if coverturas:
         return {
             "coverturas": coverturas
         }
     else:
+        logging.error(f"Error al obtener coverturas para DNI {dni.nroDocumento}")
         raise HTTPException(status_code=404, detail="Error al obtener las coverturas")
