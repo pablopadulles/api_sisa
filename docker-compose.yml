@@ -17,6 +17,7 @@ services:
     #   - PASS_FHIR
     #   - SCOPES
       - CODE_DOMAIN
+    restart: always
 
   # redis:
   #   image: redis:7.4
