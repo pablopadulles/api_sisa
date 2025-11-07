@@ -17,6 +17,7 @@ data = {
 
 def get_token():
     res = None
+    token = None
     try:
         r = requests.post(
             "https://bus.msal.gob.ar/masterfile-federacion-service/api/usuarios/aplicacion/login",

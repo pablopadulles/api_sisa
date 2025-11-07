@@ -18,6 +18,7 @@ async def cobertura(dni: schemas.Persona):
 
     for _ in range(3):  # Intentar hasta 3 veces
         token = get_token()
+        time.sleep(1)
         if token:
             break
         
