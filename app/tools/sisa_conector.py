@@ -3,6 +3,7 @@ import os
 from fastapi import HTTPException
 import logging
 
+
 headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
@@ -23,7 +24,7 @@ def get_token():
             "https://bus.msal.gob.ar/masterfile-federacion-service/api/usuarios/aplicacion/login",
             json=data,
             headers=headers,
-            verify=False,
+            verify="/app/tools/msal-gob-ar.pem",
             timeout=5
         )
         res = r.json()
@@ -41,7 +42,7 @@ def get_renaper(dni, sexo, token):
         r = requests.get(
             url,
             headers=headers,
-            verify=False,
+            verify="/app/tools/msal-gob-ar.pem",
             timeout=5
         )
         if r.status_code != 200:
@@ -61,7 +62,7 @@ def get_cobertura(dni, sexo, token):
         r = requests.get(
             url,
             headers=headers,
-            verify=False,
+            verify="/app/tools/msal-gob-ar.pem",
             timeout=5
         )
         res = r.json()
