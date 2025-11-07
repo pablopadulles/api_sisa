@@ -27,8 +27,7 @@ def get_token():
             timeout=5
         )
         res = r.json()
-        print(res)
-        token = res.get('token')
+        token = res.get('token', None)
     except Exception as e:
         logging.error(f"Error obtaining token: {e} - {res}")
     return token

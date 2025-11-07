@@ -8,9 +8,12 @@ WORKDIR /app
 # Copia el archivo de requerimientos y lo instala
 COPY requirements.txt .
 
+
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
-
+RUN apt-get update 
+RUN apt-get install -y ca-certificates
+RUN update-ca-certificates
 # Expone el puerto 8000
 EXPOSE 8000
 
