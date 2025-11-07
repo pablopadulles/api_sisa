@@ -25,9 +25,9 @@ def get_token():
             json=data,
             headers=headers,
             verify="/app/tools/msal-gob-ar-chain.pem",
-            timeout=5
         )
         res = r.json()
+        print(res)
         token = res.get('token', None)
     except Exception as e:
         logging.error(f"Error obtaining token: {e} - {res}")
