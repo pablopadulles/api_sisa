@@ -24,7 +24,7 @@ def get_token():
             "https://bus.msal.gob.ar/masterfile-federacion-service/api/usuarios/aplicacion/login",
             json=data,
             headers=headers,
-            verify="/app/tools/msal-gob-ar.pem",
+            verify="/app/tools/msal-gob-ar-chain.pem",
             timeout=5
         )
         res = r.json()
@@ -42,7 +42,7 @@ def get_renaper(dni, sexo, token):
         r = requests.get(
             url,
             headers=headers,
-            verify="/app/tools/msal-gob-ar.pem",
+            verify="/app/tools/msal-gob-ar-chain.pem",
             timeout=5
         )
         if r.status_code != 200:
@@ -62,7 +62,7 @@ def get_cobertura(dni, sexo, token):
         r = requests.get(
             url,
             headers=headers,
-            verify="/app/tools/msal-gob-ar.pem",
+            verify="/app/tools/msal-gob-ar-chain.pem",
             timeout=5
         )
         res = r.json()
