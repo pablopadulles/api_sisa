@@ -18,9 +18,11 @@ async def cobertura(dni: schemas.Persona):
 
     for _ in range(3):  # Intentar hasta 3 veces
         token = get_token()
-        time.sleep(1)
         if token:
             break
+        else:
+            time.sleep(1)
+            logging.warning(f"Reintento {_ + 1} para obtener token...")
         
     if not token:
         logging.error("No se pudo obtener el token después de varios intentos")
@@ -30,6 +32,9 @@ async def cobertura(dni: schemas.Persona):
         coberturas = get_cobertura(dni.nroDocumento, 1, token)
         if coberturas:
             break
+        else:
+            time.sleep(1)
+            logging.warning(f"Reintento {_ + 1} para obtener coberturas...")
     
     
     if coberturas:
