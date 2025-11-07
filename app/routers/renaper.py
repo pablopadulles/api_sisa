@@ -4,7 +4,7 @@ import logging
 
 from tools.sisa_conector import get_token, get_renaper
 import schemas.schemas as schemas
-
+import time
 router = APIRouter(
     prefix="/renaper",
     tags=["renaper"]
@@ -17,6 +17,9 @@ async def renaper(persona: schemas.Persona):
         token = get_token()
         if token:
             break
+        else:
+            time.sleep( _ + 1)
+            logging.warning(f"Reintento {_ + 1} para obtener token...")
 
     if not token:
         logging.error("No se pudo obtener el token después de varios intentos")
@@ -26,6 +29,9 @@ async def renaper(persona: schemas.Persona):
         renaper = get_renaper(persona.nroDocumento, persona.idSexo, token)
         if renaper:
             break
+        else:
+            time.sleep( _ + 1)
+            logging.warning(f"Reintento {_ + 1} para obtener Renaper...")
 
     if renaper:
         return {

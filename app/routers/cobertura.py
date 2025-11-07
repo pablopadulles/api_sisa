@@ -33,7 +33,7 @@ async def cobertura(dni: schemas.Persona):
         if coberturas:
             break
         else:
-            time.sleep(1)
+            time.sleep( _ + 1)
             logging.warning(f"Reintento {_ + 1} para obtener coberturas...")
     
     
