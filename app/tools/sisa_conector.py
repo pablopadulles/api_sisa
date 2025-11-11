@@ -35,14 +35,14 @@ def get_token():
 def get_renaper(dni, sexo, token):
     res = None
     try:
-        headers.update({'token': token, 'codDominio': os.environ.get("CODE_DOMAIN", False)})
+        request_headers = headers.copy()  # 👈 CAMBIO: copia local
+        request_headers.update({'token': token, 'codDominio': os.environ.get("CODE_DOMAIN", False)})
         url = f"https://bus.msal.gob.ar/masterfile-federacion-service/api/personas/renaper?nroDocumento={dni}&idSexo={sexo}"
 
         r = requests.get(
             url,
-            headers=headers,
+            headers=request_headers,
             verify="/app/tools/msal-gob-ar-chain.pem",
-            timeout=5
         )
         if r.status_code != 200:
             raise HTTPException(status_code=404, detail="Verificar el sexo o el DNI")
@@ -56,13 +56,13 @@ def get_renaper(dni, sexo, token):
 def get_cobertura(dni, sexo, token):
     res = None
     try:
-        headers.update({'token': token, 'codDominio': os.environ.get("CODE_DOMAIN", False)})
+        request_headers = headers.copy()  # 👈 CAMBIO: copia local
+        request_headers.update({'token': token, 'codDominio': os.environ.get("CODE_DOMAIN", False)})
         url = f"https://bus.msal.gob.ar/masterfile-federacion-service/api/personas/cobertura?nroDocumento={dni}&idSexo={sexo}"
         r = requests.get(
             url,
-            headers=headers,
+            headers=request_headers,
             verify="/app/tools/msal-gob-ar-chain.pem",
-            timeout=5
         )
         res = r.json()
 
