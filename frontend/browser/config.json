@@ -1,4 +1,4 @@
 {
-  "apiUrl": "https://pruebas.it3.com.ar/sisa",
+  "apiUrl": "https://apisisa.hospitalposadas.gob.ar/",
   "environment": "production"
 }
