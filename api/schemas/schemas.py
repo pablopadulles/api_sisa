@@ -23,18 +23,18 @@ class Renaper(BaseModel):
     apellido: str
     nombres: str
     fechaNacimiento: str
-    cuil: str
-    calle: str
-    numero: str
+    cuil: Optional[None]
+    calle: Optional[None]
+    numero: Optional[None]
     piso: Optional[str]
     departamento: Optional[str]
-    cpostal: str
-    barrio: str
+    cpostal: Optional[None]
+    barrio: Optional[None]
     monoblock: Optional[str]
-    ciudad: str
-    municipio: str
-    provincia: str
-    pais: str
+    ciudad: Optional[None]
+    municipio: Optional[None]
+    provincia: Optional[None]
+    pais: Optional[None]
     mensaf: str
     origenf: str
     fechaf: str
@@ -43,8 +43,8 @@ class Renaper(BaseModel):
     numeroDocumento: str
     fechaConsulta: str
     idciudadano: str
-    descripcionError: str
-    codigoError: int
+    descripcionError: Optional[None]
+    codigoError: Optional[None]
 
 class RenaperResponse(BaseModel):
     renaper: Renaper
